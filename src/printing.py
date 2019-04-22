@@ -11,10 +11,11 @@ z = "I like turtles!"
 # Using the printf operator (%), print the following feeding in the values of x,
 # y, and z:
 # x is 10, y is 2.25, z is "I like turtles!"
-# print(f'The value of pi is approximately {x}.' )
+# print('x is %x' % x)
+# This prints out "Hello, John!"
 
-
+print("x is %i, y is %f, z is %s" % (x,y,z))
 # Use the 'format' string method to print the same thing
 print(' x is {}, y is {}, z is {}'.format(x, y, z))
-# Finally, print the same thing using an f-string
-print(f'The value of pi is approximately {x}.')
+# # Finally, print the same thing using an f-string
+print(f'x is {x}, y is {y}, z is {z}.')
