@@ -22,3 +22,28 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+# calendar.setfirstweekday(calendar.SUNDAY)
+yy = 2019
+mm = 4
+
+# print(calendar.month(yy,mm))
+def getMonth(yy, mm):
+    return calendar.month(yy, mm)
+
+while True: 
+  mm = input("Please enter month or q to quit")
+  if mm == 'q':
+    break
+  yy = input("Please enter year or q to quit")
+  if yy == 'q':
+    break
+  if mm == '':
+    mm = 4
+  if yy == '':
+    yy = 2019
+  mm =int(mm)
+  yy = int(yy)
+  calendar = getMonth(yy, mm)
+  print(calendar)
+
+  
