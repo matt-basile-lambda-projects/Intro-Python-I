@@ -1,66 +1,53 @@
 import random
-#welcome message 
 
-def load_results():
-    text_file = open("history.txt", "r")
-    history = text_file.read().split(",")
-    text_file.close()
-    return history
+# Create a rock/paper/scissors REPL loop
+# Have a computer AI to play against us
+# Keep track of the score
+# Rules: r beats s, s beats p, p beats r
 
-# def save_results(w,t,l):
-#     text_file = open("hisotry.text", "w")
-#     text_file.write(str(w) + "," + str(t) + "," + str(l))
-#     text_file.close()
+wins = 0
+losses = 0
+ties = 0
+choices = ['r', 'p', 's']
 
-results = load_results()
-wins = int(results[0]) 
-ties = int(results[1]) 
-losses = int(results[2]) 
-
-print("Welcome to RPS!")
-print("Wins: %s, Ties %s, Losses: %s" % (wins, ties, losses))
-print("Please choose to continue...")
-
-computer = random.randint(1,3)
-user = int(input("[1] Rock [2] Paper [3] Scissors [9] Quit\n"))
-
-while not user == 9:
-    if user == 1:
-        if computer == 1:
-            print("Computer chose rock... tie!")
-            ties +=1
-        elif computer == 2:
-            print("Computer chose paper... computer wins :(")
+while True:
+    print(f"Score: {wins} - {losses} - {ties}")
+    cmd = input("\nChoose r/p/s: ")
+    # AI picks a random choice from r/p/s
+    ai_choice = choices[random.randrange(3)]
+    print (f"Computer chose {ai_choice}")
+    if cmd == "r":
+        if ai_choice == 'p':
             losses += 1
-        else:
-            print("Computer chose scissors... you wins :)")
-            wins+=1
-    elif user == 2:
-        if computer == 1:
-            print("Computer chose rock... you wins :)")
-            wins +=1
-        elif computer == 2:
-            print("Computer chose paper... tie!")
-            ties += 1
-        else:
-            print("Computer chose scissors... computer wins :(")
-            losses+=1
-    elif user == 3:
-        if computer == 1:
-            print("Computer chose rock... computer wins :(")
-            losses +=1
-        elif computer == 2:
-            print("Computer chose paper... you wins :)!")
+            print("You lose")
+        elif ai_choice == 's':
             wins += 1
-        else:
-            print("Computer chose scissors... tie!")
-            ties+=1 
+            print("You win!")
+        elif ai_choice == 'r':
+            ties += 1
+            print("You tie.")
+    elif cmd == "p":
+        if ai_choice == 's':
+            losses += 1
+            print("You lose")
+        elif ai_choice == 'r':
+            wins += 1
+            print("You win!")
+        elif ai_choice == 'p':
+            ties += 1
+            print("You tie.")
+    elif cmd == "s":
+        if ai_choice == 'r':
+            losses += 1
+            print("You lose")
+        elif ai_choice == 'p':
+            wins += 1
+            print("You win!")
+        elif ai_choice == 's':
+            ties += 1
+            print("You tie.")
+    elif cmd == "q":
+        print("Goodbye!")
+        break
     else:
-        print("Invalid selection. Please try again")
-    
-save_results(wins, ties, losses)
-print("Wins: %s, Ties %s, Losses: %s" % (wins, ties, losses))
-print("Please choose to continue...")
-
-    computer = random.randint(1,3)
-    # user = int(input("[1] Rock [2] Paper [3] Scissors [9] Quit\n")
+        print("I do not understand that command.")
